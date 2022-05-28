@@ -170,6 +170,11 @@ public class ValidationItemControllerV2 {
             RedirectAttributes redirectAttributes,
             Model model
     ) {
+        if (bindingResult.hasErrors()) {
+            log.info("errors={}", bindingResult);
+            return "validation/v2/addForm";
+        }
+
         log.info("objectName={}", bindingResult.getObjectName());
         log.info("target={}", bindingResult.getTarget());
 
